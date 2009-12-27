@@ -209,6 +209,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
+				SYMROOT = ../../../build;
 			};
 			name = Debug;
 		};
