@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface openwolViewController : UIViewController {
-
+	IBOutlet UITextField* _macAddress;
+	IBOutlet UITextField* _port;
+	IBOutlet UITextField* _subNet;
+	IBOutlet UITextField* _host;
+	IBOutlet UISegmentedControl* _lanOrWan;
 }
+
+- (void)onWakeUp:(id)sender;
+- (void)backgroundClick:(id)sender;
 
 @end
 

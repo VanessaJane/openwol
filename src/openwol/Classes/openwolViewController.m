@@ -7,10 +7,27 @@
 //
 
 #import "openwolViewController.h"
+#import "WOLClient.h"
 
 @implementation openwolViewController
 
+- (void)backgroundClick:(id)sender
+{
+	[_host resignFirstResponder];
+	[_subNet resignFirstResponder];
+	[_port resignFirstResponder];
+	[_macAddress resignFirstResponder];
+}
 
+- (void)onWakeUp:(id)sender
+{
+	WOLClient* client = [[WOLClient alloc] init];
+	client.Host = [_host text];
+	client.SubNet = [_subNet text];
+	client.Port = [_port text];
+	client.Mac = [_macAddress text];
+	[client wakeUp:_lanOrWan.selectedSegmentIndex == 0];
+}
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.

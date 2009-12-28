@@ -15,6 +15,15 @@
 		2899E5220DE3E06400AC0155 /* openwolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* openwolViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* openwolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* openwolViewController.m */; };
+		966CE79210E7DF4200996174 /* WOLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79110E7DF4200996174 /* WOLClient.m */; };
+		966CE79F10E7F31900996174 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79E10E7F31900996174 /* RegexKitLite.m */; };
+		966CE7C510E7F6CB00996174 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE7C410E7F6CB00996174 /* libicucore.dylib */; };
+		966CE84D10E88B8400996174 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79E10E7F31900996174 /* RegexKitLite.m */; };
+		966CE84E10E88B8B00996174 /* openwolAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* openwolAppDelegate.m */; };
+		966CE84F10E88B9400996174 /* WOLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79110E7DF4200996174 /* WOLClient.m */; };
+		966CE85310E88C4400996174 /* WOLClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE85110E88C4400996174 /* WOLClientTest.m */; };
+		966CE86A10E890E700996174 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE85410E890DB00996174 /* SenTestingKit.framework */; };
+		966CE87A10E8918600996174 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE7C410E7F6CB00996174 /* libicucore.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +40,16 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* openwol_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openwol_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* openwol-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openwol-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		966CE79010E7DF4200996174 /* WOLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOLClient.h; sourceTree = "<group>"; };
+		966CE79110E7DF4200996174 /* WOLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOLClient.m; sourceTree = "<group>"; };
+		966CE79D10E7F30B00996174 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		966CE79E10E7F31900996174 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		966CE7C410E7F6CB00996174 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		966CE84710E88B6B00996174 /* UnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		966CE84810E88B6B00996174 /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
+		966CE85010E88C4400996174 /* WOLClientTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOLClientTest.h; sourceTree = "<group>"; };
+		966CE85110E88C4400996174 /* WOLClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOLClientTest.m; sourceTree = "<group>"; };
+		966CE85410E890DB00996174 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +60,16 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				966CE7C510E7F6CB00996174 /* libicucore.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		966CE84410E88B6B00996174 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				966CE86A10E890E700996174 /* SenTestingKit.framework in Frameworks */,
+				966CE87A10E8918600996174 /* libicucore.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,10 +79,15 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				966CE84110E88B5300996174 /* UnitTest */,
+				966CE79D10E7F30B00996174 /* RegexKitLite.h */,
 				1D3623240D0F684500981E51 /* openwolAppDelegate.h */,
 				1D3623250D0F684500981E51 /* openwolAppDelegate.m */,
+				966CE79E10E7F31900996174 /* RegexKitLite.m */,
 				28D7ACF60DDB3853001CB0EB /* openwolViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* openwolViewController.m */,
+				966CE79010E7DF4200996174 /* WOLClient.h */,
+				966CE79110E7DF4200996174 /* WOLClient.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -62,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* openwol.app */,
+				966CE84710E88B6B00996174 /* UnitTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +109,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				966CE84810E88B6B00996174 /* UnitTest-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -100,11 +136,22 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				966CE85410E890DB00996174 /* SenTestingKit.framework */,
+				966CE7C410E7F6CB00996174 /* libicucore.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		966CE84110E88B5300996174 /* UnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				966CE85010E88C4400996174 /* WOLClientTest.h */,
+				966CE85110E88C4400996174 /* WOLClientTest.m */,
+			);
+			name = UnitTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +174,24 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* openwol.app */;
 			productType = "com.apple.product-type.application";
 		};
+		966CE84610E88B6B00996174 /* UnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 966CE84C10E88B6D00996174 /* Build configuration list for PBXNativeTarget "UnitTest" */;
+			buildPhases = (
+				966CE84210E88B6B00996174 /* Resources */,
+				966CE84310E88B6B00996174 /* Sources */,
+				966CE84410E88B6B00996174 /* Frameworks */,
+				966CE84510E88B6B00996174 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UnitTest;
+			productName = UnitTest;
+			productReference = 966CE84710E88B6B00996174 /* UnitTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -143,6 +208,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* openwol */,
+				966CE84610E88B6B00996174 /* UnitTest */,
 			);
 		};
 /* End PBXProject section */
@@ -157,7 +223,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		966CE84210E88B6B00996174 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		966CE84510E88B6B00996174 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -167,6 +256,19 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* openwolAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* openwolViewController.m in Sources */,
+				966CE79210E7DF4200996174 /* WOLClient.m in Sources */,
+				966CE79F10E7F31900996174 /* RegexKitLite.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		966CE84310E88B6B00996174 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				966CE84D10E88B8400996174 /* RegexKitLite.m in Sources */,
+				966CE84E10E88B8B00996174 /* openwolAppDelegate.m in Sources */,
+				966CE84F10E88B9400996174 /* WOLClient.m in Sources */,
+				966CE85310E88C4400996174 /* WOLClientTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +280,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"\"$(DEVELOPER_DIR)/Library/PrivateFrameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -192,10 +299,76 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"\"$(DEVELOPER_DIR)/Library/PrivateFrameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = openwol_Prefix.pch;
 				INFOPLIST_FILE = "openwol-Info.plist";
 				PRODUCT_NAME = openwol;
+			};
+			name = Release;
+		};
+		966CE84A10E88B6D00996174 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(DEVELOPER_DIR)/Library/PrivateFrameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "UnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTest;
+				SDKROOT = iphoneos3.1.2;
+				TEST_HOST = "";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		966CE84B10E88B6D00996174 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(DEVELOPER_DIR)/Library/PrivateFrameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "UnitTest-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTest;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -234,6 +407,15 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		966CE84C10E88B6D00996174 /* Build configuration list for PBXNativeTarget "UnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				966CE84A10E88B6D00996174 /* Debug */,
+				966CE84B10E88B6D00996174 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
