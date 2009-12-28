@@ -26,7 +26,44 @@
 	client.SubNet = [_subNet text];
 	client.Port = [_port text];
 	client.Mac = [_macAddress text];
+	
+	if (![client checkPort]) {
+		[self alert:@"Port should large than 0 and less than 65535."];
+		[client release];
+		return;
+	}
+	
+	if (![client checkHost]) {
+		[self alert:@"There is something wrong wiht IP."];
+		[client release];
+		return;
+	}
+	
+	if (![client checkMACFormat]) {
+		[self alert:@"There is something wrong wiht MAC."];
+		[client release];
+		return;
+	}
+	
+	if (![client checkSubnetMask]) {
+		[self alert:@"There is something wrong wiht Subnet Mask."];
+		[client release];
+		return;
+	}
+
 	[client wakeUp:_lanOrWan.selectedSegmentIndex == 0];
+	[client release];
+}
+
+- (void)alert:(NSString*)msg{
+	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Warning"
+													message:msg 
+													delegate:self
+											  cancelButtonTitle:@"Okey"
+										
+											  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 /*
