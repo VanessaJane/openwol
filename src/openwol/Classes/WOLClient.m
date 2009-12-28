@@ -40,7 +40,35 @@ const int HEADER = 6;
 const int MAC_BYTES_LEN = 6;
 const int MAC_TIMES = 16;
 
+- (BOOL)checkPort
+{
+	return [_port intValue] > 0 && [_port intValue] <= 65535;
+}
 
+-(BOOL)checkHost
+{
+	NSArray* ipParts =
+		[_host captureComponentsMatchedByRegex:(NSString*)IP_PATTERN];
+	
+	return (5 == [ipParts count]);
+}
+
+-(BOOL)checkSubnetMask
+{
+	NSArray* ipParts =
+	[_subNet captureComponentsMatchedByRegex:(NSString*)IP_PATTERN];
+	
+	return (5 == [ipParts count]);
+	
+}
+
+-(BOOL)checkMACFormat
+{
+	NSArray* macParts =
+		[_mac captureComponentsMatchedByRegex:(NSString*)MAC_PATTERN];
+	
+	return (7 == [macParts count]);
+}
 
 -(void) wakeUp:(BOOL)overInternet
 {
@@ -82,14 +110,14 @@ const int MAC_TIMES = 16;
 	NSArray* hostParts
 		= [_host captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
 	
-	if (hostParts == nil) {
+	if ([hostParts count] == 5) {
 		return nil;
 	}
 	
 	NSArray* maskParts
 		= [_subNet captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
 	
-	if (maskParts == nil) {
+	if ([maskParts count] == 5) {
 		return nil;
 	}
 	

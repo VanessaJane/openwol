@@ -18,6 +18,6 @@
 
 - (void)onWakeUp:(id)sender;
 - (void)backgroundClick:(id)sender;
-
+- (void)alert:(NSString*)msg;
 @end
 

@@ -27,5 +27,9 @@
 -(NSData*) buildPayload;
 -(NSData*) parseMAC;
 -(struct sockaddr_in*) getTargetAddr;
+-(BOOL)checkHost;
+-(BOOL)checkMACFormat;
+-(BOOL)checkSubnetMask;
+- (BOOL)checkPort;
 
 @end
