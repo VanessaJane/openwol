@@ -33,25 +33,29 @@
 		return;
 	}
 	
-	if (![client checkHost]) {
-		[self alert:@"There is something wrong with IP."];
-		[client release];
-		return;
-	}
 	
 	if (![client checkMACFormat]) {
 		[self alert:@"There is something wrong with MAC."];
 		[client release];
 		return;
 	}
-	
-	if (![client checkSubnetMask]) {
-		[self alert:@"There is something wrong with Subnet Mask."];
-		[client release];
-		return;
-	}
+	BOOL overInternet = _lanOrWan.selectedSegmentIndex == 0;
+	if (overInternet) {
 
-	[client wakeUp:_lanOrWan.selectedSegmentIndex == 0];
+		if (![client checkHost]) {
+			[self alert:@"There is something wrong with IP."];
+			[client release];
+			return;
+		}
+		
+		
+		if (![client checkSubnetMask]) {
+			[self alert:@"There is something wrong with Subnet Mask."];
+			[client release];
+			return;
+		}
+	}
+	[client wakeUp:overInternet];
 	[client release];
 }
 
