@@ -25,6 +25,8 @@
 #import <arpa/inet.h>
 #import <sys/select.h>
 #import <sys/time.h>
+#import <CFNetwork/CFNetwork.h>
+
 
 #define BOARDCAST_ADDR "255.255.255.255"
 
@@ -36,6 +38,8 @@
 
 const NSString* IP_PATTERN = @"^\\s*(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\s*$";
 const NSString* MAC_PATTERN = @"^\\s*([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})\\s*$";
+const NSString* SAVED_PATTERN = @"^(.+)::(.+)::(.+)::(.+)$"
+
 const int HEADER = 6;
 const int MAC_BYTES_LEN = 6;
 const int MAC_TIMES = 16;
@@ -50,7 +54,37 @@ const int MAC_TIMES = 16;
 	NSArray* ipParts =
 		[_host captureComponentsMatchedByRegex:(NSString*)IP_PATTERN];
 	
-	return (5 == [ipParts count]);
+	if (5 == [ipParts count]){
+		return YES;
+	}
+	
+	CFHostRef host = CFHostCreateWithName(NULL, (CFStringRef)_host);
+	
+	CFStreamError err;
+	bzero(&err, sizeof(CFStreamError));
+	
+	BOOL ret = NO;
+	if(CFHostStartInfoResolution(host, kCFHostAddresses, &err))
+	{
+		Boolean hasBeenResolved;
+		NSArray* addrs = (NSArray*)CFHostGetAddressing(host, &hasBeenResolved);
+		if ([addrs count] > 0) {
+			NSData* addrData = [addrs objectAtIndex:0];
+			struct sockaddr_in* pAddr = (struct sockaddr_in*)[addrData bytes];
+			[_host release];
+			
+			char* pAddrString = inet_ntoa(pAddr->sin_addr);
+			
+			_host = [[NSString alloc] initWithCStringNoCopy:pAddrString
+													 length:strlen(pAddrString)
+											   freeWhenDone:YES];
+			
+			ret = YES;
+		}
+		
+	}
+	CFRelease(host);
+	return ret;
 }
 
 -(BOOL)checkSubnetMask
@@ -110,16 +144,9 @@ const int MAC_TIMES = 16;
 	NSArray* hostParts
 		= [_host captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
 	
-	if ([hostParts count] != 5) {
-		return nil;
-	}
 	
 	NSArray* maskParts
 		= [_subNet captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
-	
-	if ([maskParts count] != 5) {
-		return nil;
-	}
 	
 	NSMutableString* ipAddressString
 		= [[NSMutableString alloc] initWithCapacity:16];
@@ -140,7 +167,7 @@ const int MAC_TIMES = 16;
 	
 	free(remote);
 	
-	int addrBufferSize = [ipAddressString length] + 1;
+	size_t addrBufferSize = [ipAddressString length] + 1;
 	char* pAddressBuffer = malloc(addrBufferSize);
 	bzero(pAddressBuffer, addrBufferSize);
 	[ipAddressString getCString:pAddressBuffer
