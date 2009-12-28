@@ -24,6 +24,8 @@
 		966CE85310E88C4400996174 /* WOLClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE85110E88C4400996174 /* WOLClientTest.m */; };
 		966CE86A10E890E700996174 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE85410E890DB00996174 /* SenTestingKit.framework */; };
 		966CE87A10E8918600996174 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE7C410E7F6CB00996174 /* libicucore.dylib */; };
+		968B38CB10E904E000863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
+		968B391110E9097400863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,7 @@
 		966CE85010E88C4400996174 /* WOLClientTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOLClientTest.h; sourceTree = "<group>"; };
 		966CE85110E88C4400996174 /* WOLClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOLClientTest.m; sourceTree = "<group>"; };
 		966CE85410E890DB00996174 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		968B38CA10E904E000863E23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				966CE7C510E7F6CB00996174 /* libicucore.dylib in Frameworks */,
+				968B38CB10E904E000863E23 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +74,7 @@
 			files = (
 				966CE86A10E890E700996174 /* SenTestingKit.framework in Frameworks */,
 				966CE87A10E8918600996174 /* libicucore.dylib in Frameworks */,
+				968B391110E9097400863E23 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +141,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				968B38CA10E904E000863E23 /* CFNetwork.framework */,
 				966CE85410E890DB00996174 /* SenTestingKit.framework */,
 				966CE7C410E7F6CB00996174 /* libicucore.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,

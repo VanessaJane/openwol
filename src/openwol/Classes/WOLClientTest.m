@@ -46,6 +46,20 @@
 	
 }
 
+- (void) testCheckHost
+{
+	WOLClient* client = [[WOLClient alloc] init];
+	client.Host = @"217.204.255.55";
+	STAssertTrue([client checkHost], @"check host error");
+	
+	client.Host = @"www.google.cn";
+	STAssertTrue([client checkHost], @"check host error");
+	
+	client.Host = @"a.b.c.d";
+	STAssertTrue(![client checkHost], @"check host error");
+	
+}
+
 - (void) testGetTargetAddr
 {
 	WOLClient* client = [[WOLClient alloc] init];
