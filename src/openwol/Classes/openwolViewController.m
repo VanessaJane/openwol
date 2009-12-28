@@ -34,19 +34,19 @@
 	}
 	
 	if (![client checkHost]) {
-		[self alert:@"There is something wrong wiht IP."];
+		[self alert:@"There is something wrong with IP."];
 		[client release];
 		return;
 	}
 	
 	if (![client checkMACFormat]) {
-		[self alert:@"There is something wrong wiht MAC."];
+		[self alert:@"There is something wrong with MAC."];
 		[client release];
 		return;
 	}
 	
 	if (![client checkSubnetMask]) {
-		[self alert:@"There is something wrong wiht Subnet Mask."];
+		[self alert:@"There is something wrong with Subnet Mask."];
 		[client release];
 		return;
 	}
