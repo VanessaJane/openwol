@@ -53,8 +53,8 @@ const NSString* SAVED_PATTERN = @"^(.+)::(.+)::(.*)::(.*)::(\\d+)$";
 								 stringWithFormat:@"%@::%@::%@::%@::%d",
 						  self.Mac,
 						  self.Port,
-						  self.SubNet == nil ? @" " : self.SubNet,
-						  self.Host == nil ? @" " : self.Host,
+						  self.SubNet,
+						  self.Host,
 						  self.OverInternet];
 	
 	NSString* fileName = [@"~/Documents/settings.txt" stringByExpandingTildeInPath];
