@@ -8,6 +8,7 @@
 
 #import "openwolViewController.h"
 #import "WOLClient.h"
+#import "Settings.h"
 
 @implementation openwolViewController
 
@@ -27,6 +28,13 @@
 	client.Port = [_port text];
 	client.Mac = [_macAddress text];
 	
+	Settings* settings = [[Settings alloc] init];
+	settings.Host = [_host text];
+	settings.SubNet = [_subNet text];
+	settings.Port = [_port text];
+	settings.Mac = [_macAddress text];
+	settings.OverInternet = _lanOrWan.selectedSegmentIndex;
+	
 	if (![client checkPort]) {
 		[self alert:@"Port should large than 0 and less than 65535."];
 		[client release];
@@ -43,7 +51,7 @@
 	if (overInternet) {
 
 		if (![client checkHost]) {
-			[self alert:@"There is something wrong with IP."];
+			[self alert:@"There is something wrong with Host."];
 			[client release];
 			return;
 		}
@@ -55,6 +63,8 @@
 			return;
 		}
 	}
+	[settings save];
+	[settings release];
 	[client wakeUp:overInternet];
 	[client release];
 }
@@ -87,12 +97,23 @@
 */
 
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    //[super viewDidLoad];
+	
+	Settings* settings = [[Settings alloc] init];
+	if ([settings load]) {
+		_host.text = settings.Host;
+		_port.text = settings.Port;
+		_macAddress.text = settings.Mac;
+		_subNet.text = settings.SubNet;
+		_lanOrWan.selectedSegmentIndex = settings.OverInternet;
+	}
+	
+	[settings release];
 }
-*/
+
 
 
 /*

@@ -38,7 +38,6 @@
 
 const NSString* IP_PATTERN = @"^\\s*(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\s*$";
 const NSString* MAC_PATTERN = @"^\\s*([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})\\s*$";
-const NSString* SAVED_PATTERN = @"^(.+)::(.+)::(.+)::(.+)$"
 
 const int HEADER = 6;
 const int MAC_BYTES_LEN = 6;

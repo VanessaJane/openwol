@@ -26,6 +26,8 @@
 		966CE87A10E8918600996174 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE7C410E7F6CB00996174 /* libicucore.dylib */; };
 		968B38CB10E904E000863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
 		968B391110E9097400863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
+		968B393310E90F0700863E23 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* Settings.m */; };
+		968B393410E90F0700863E23 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		966CE85110E88C4400996174 /* WOLClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOLClientTest.m; sourceTree = "<group>"; };
 		966CE85410E890DB00996174 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		968B38CA10E904E000863E23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		968B393110E90F0700863E23 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		968B393210E90F0700863E23 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				28D7ACF70DDB3853001CB0EB /* openwolViewController.m */,
 				966CE79010E7DF4200996174 /* WOLClient.h */,
 				966CE79110E7DF4200996174 /* WOLClient.m */,
+				968B393110E90F0700863E23 /* Settings.h */,
+				968B393210E90F0700863E23 /* Settings.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 				28D7ACF80DDB3853001CB0EB /* openwolViewController.m in Sources */,
 				966CE79210E7DF4200996174 /* WOLClient.m in Sources */,
 				966CE79F10E7F31900996174 /* RegexKitLite.m in Sources */,
+				968B393310E90F0700863E23 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +282,7 @@
 				966CE84E10E88B8B00996174 /* openwolAppDelegate.m in Sources */,
 				966CE84F10E88B9400996174 /* WOLClient.m in Sources */,
 				966CE85310E88C4400996174 /* WOLClientTest.m in Sources */,
+				968B393410E90F0700863E23 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
