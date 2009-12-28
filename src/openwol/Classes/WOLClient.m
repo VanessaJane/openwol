@@ -110,14 +110,14 @@ const int MAC_TIMES = 16;
 	NSArray* hostParts
 		= [_host captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
 	
-	if ([hostParts count] == 5) {
+	if ([hostParts count] != 5) {
 		return nil;
 	}
 	
 	NSArray* maskParts
 		= [_subNet captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
 	
-	if ([maskParts count] == 5) {
+	if ([maskParts count] != 5) {
 		return nil;
 	}
 	
@@ -152,7 +152,7 @@ const int MAC_TIMES = 16;
 			  &(pRemoteIP->sin_addr.s_addr));
 	
 	
-	
+	[ipAddressString release];
 	free(pAddressBuffer);
 	return pRemoteIP;
 }

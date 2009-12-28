@@ -9,6 +9,17 @@
 #import "WOLClientTest.h"
 #import "WOLClient.h"
 
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <strings.h>
+#import <netdb.h>
+#import <net/if.h>
+#import <netinet/in.h>
+#import <ifaddrs.h>
+#import <arpa/inet.h>
+#import <sys/select.h>
+#import <sys/time.h>
+
 @implementation WOLClientTest
 
 #if USE_APPLICATION_UNIT_TEST     // all code under test is in the iPhone Application
@@ -35,6 +46,20 @@
 	
 }
 
+- (void) testGetTargetAddr
+{
+	WOLClient* client = [[WOLClient alloc] init];
+	client.Host = @"217.204.255.55";
+	client.SubNet = @"255.255.255.240";
+	
+	struct sockaddr_in* sock = [client getTargetAddr];
+	
+	STAssertTrue(strcmp("217.204.255.63", inet_ntoa(sock->sin_addr)) == 0, @"Address error.");
+	
+	free(sock);
+	[client release];
+}
+
 - (void) testBuildPayLoad
 {
 	WOLClient* client = [[WOLClient alloc] init];
@@ -52,7 +77,7 @@
 	for (int i = 6; i < [payload length]; i++) {
 		STAssertTrue( bytes[i] == 0, @"Payload content error");
 	}
-	
+	[client release];
 }
 
 - (void) testParseMAC {
@@ -86,6 +111,8 @@
 	for (int i = 0; i < [macData length]; i++) {
 		STAssertTrue(bytes[i] == 0xAF, @"MAC data parse error.");
 	}
+	
+	[client release];
 }
 #else // all code under test must be linked into the Unit Test bundle
 
