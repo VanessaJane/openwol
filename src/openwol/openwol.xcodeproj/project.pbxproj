@@ -28,7 +28,6 @@
 		968B391110E9097400863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
 		968B393310E90F0700863E23 /* ComputerValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* ComputerValidator.m */; };
 		968B393410E90F0700863E23 /* ComputerValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* ComputerValidator.m */; };
-		968B39BD10E91A2B00863E23 /* SettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B39BB10E91A2B00863E23 /* SettingsTest.m */; };
 		96F352EB10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */; };
 		96F352EC10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */; };
 		96F352F210E9ED6000F6B43C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F352F110E9ED6000F6B43C /* CoreData.framework */; };
@@ -65,8 +64,6 @@
 		968B38CA10E904E000863E23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		968B393110E90F0700863E23 /* ComputerValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerValidator.h; sourceTree = "<group>"; };
 		968B393210E90F0700863E23 /* ComputerValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputerValidator.m; sourceTree = "<group>"; };
-		968B39BA10E91A2B00863E23 /* SettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTest.h; sourceTree = "<group>"; };
-		968B39BB10E91A2B00863E23 /* SettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTest.m; sourceTree = "<group>"; };
 		96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = openwol.xcdatamodel; sourceTree = "<group>"; };
 		96F352F110E9ED6000F6B43C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		96F3532910E9F71600F6B43C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -181,8 +178,6 @@
 			children = (
 				966CE85010E88C4400996174 /* WOLClientTest.h */,
 				966CE85110E88C4400996174 /* WOLClientTest.m */,
-				968B39BA10E91A2B00863E23 /* SettingsTest.h */,
-				968B39BB10E91A2B00863E23 /* SettingsTest.m */,
 			);
 			name = UnitTest;
 			sourceTree = "<group>";
@@ -343,7 +338,6 @@
 				966CE84F10E88B9400996174 /* WOLClient.m in Sources */,
 				966CE85310E88C4400996174 /* WOLClientTest.m in Sources */,
 				968B393410E90F0700863E23 /* ComputerValidator.m in Sources */,
-				968B39BD10E91A2B00863E23 /* SettingsTest.m in Sources */,
 				96F352EC10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
