@@ -6,30 +6,25 @@
 //  Copyright 2009 Lychee Studio. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
+#import <netinet/in.h>
+#import <ifaddrs.h>
 
+@class Computer;
 @interface WOLClient : NSObject {
-	NSString* _mac;
-	NSString* _port;
-	NSString* _subNet;
-	NSString* _host;
+	Computer* _computer;
+	NSString* _hostIPAddr;
 }
 
-@property (retain, nonatomic) NSString* Mac;
-@property (retain, nonatomic) NSString* Port;
-@property (retain, nonatomic) NSString* SubNet;
-@property (retain, nonatomic) NSString* Host;
+@property (retain, nonatomic) Computer* computer;
 
--(void) wakeUp:(BOOL)overInternet;
+
+-(void) wakeUp;
 -(void) wakeUpLan;
 -(void) wakeUpWan;
 -(NSData*) buildPayload;
 -(NSData*) parseMAC;
--(struct sockaddr_in*) getTargetAddr;
--(BOOL)checkHost;
--(BOOL)checkMACFormat;
--(BOOL)checkSubnetMask;
-- (BOOL)checkPort;
+
+
 
 @end

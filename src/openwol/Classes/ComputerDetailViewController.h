@@ -8,17 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
-@interface openwolViewController : UIViewController {
+
+@class Computer;
+
+@interface ComputerDetailViewController : UIViewController {
 	IBOutlet UITextField* _macAddress;
 	IBOutlet UITextField* _port;
 	IBOutlet UITextField* _subNet;
 	IBOutlet UITextField* _host;
+	IBOutlet UITextField* _name;
 	IBOutlet UISegmentedControl* _lanOrWan;
+	IBOutlet UIButton* _saveButton;
+	Computer* _computer;
+	
+	id _delegate;
 }
 
-- (void)onWakeUp:(id)sender;
+@property (nonatomic, retain) Computer* computer;
+@property (retain, nonatomic) id delegate;
+
+- (IBAction)onSave:(id)sender;
 - (void)backgroundClick:(id)sender;
 - (void)alert:(NSString*)msg;
-- (void)viewDidLoad;
 @end
 

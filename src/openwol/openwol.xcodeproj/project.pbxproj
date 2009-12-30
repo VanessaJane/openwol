@@ -12,9 +12,9 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		2899E5220DE3E06400AC0155 /* openwolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* openwolViewController.xib */; };
+		2899E5220DE3E06400AC0155 /* ComputerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ComputerDetailView.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		28D7ACF80DDB3853001CB0EB /* openwolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* openwolViewController.m */; };
+		28D7ACF80DDB3853001CB0EB /* ComputerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ComputerDetailViewController.m */; };
 		966CE79210E7DF4200996174 /* WOLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79110E7DF4200996174 /* WOLClient.m */; };
 		966CE79F10E7F31900996174 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79E10E7F31900996174 /* RegexKitLite.m */; };
 		966CE7C510E7F6CB00996174 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE7C410E7F6CB00996174 /* libicucore.dylib */; };
@@ -26,9 +26,15 @@
 		966CE87A10E8918600996174 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE7C410E7F6CB00996174 /* libicucore.dylib */; };
 		968B38CB10E904E000863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
 		968B391110E9097400863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
-		968B393310E90F0700863E23 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* Settings.m */; };
-		968B393410E90F0700863E23 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* Settings.m */; };
+		968B393310E90F0700863E23 /* ComputerValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* ComputerValidator.m */; };
+		968B393410E90F0700863E23 /* ComputerValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* ComputerValidator.m */; };
 		968B39BD10E91A2B00863E23 /* SettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B39BB10E91A2B00863E23 /* SettingsTest.m */; };
+		96F352EB10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */; };
+		96F352EC10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */; };
+		96F352F210E9ED6000F6B43C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F352F110E9ED6000F6B43C /* CoreData.framework */; };
+		96F3532B10E9F71600F6B43C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3532A10E9F71600F6B43C /* MainViewController.m */; };
+		96F3547A10EA522C00F6B43C /* Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3547910EA522C00F6B43C /* Computer.m */; };
+		96F355C410EA861000F6B43C /* ComputerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F355C310EA861000F6B43C /* ComputerCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,13 +44,14 @@
 		1D6058910D05DD3D006BFB54 /* openwol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openwol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2899E5210DE3E06400AC0155 /* openwolViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = openwolViewController.xib; sourceTree = "<group>"; };
+		2899E5210DE3E06400AC0155 /* ComputerDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComputerDetailView.xib; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28D7ACF60DDB3853001CB0EB /* openwolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openwolViewController.h; sourceTree = "<group>"; };
-		28D7ACF70DDB3853001CB0EB /* openwolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openwolViewController.m; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* ComputerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerDetailViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* ComputerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputerDetailViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* openwol_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openwol_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* openwol-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openwol-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		96466F2C10EB1D49005AE65B /* RegexPatterns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexPatterns.h; sourceTree = "<group>"; };
 		966CE79010E7DF4200996174 /* WOLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOLClient.h; sourceTree = "<group>"; };
 		966CE79110E7DF4200996174 /* WOLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOLClient.m; sourceTree = "<group>"; };
 		966CE79D10E7F30B00996174 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
@@ -56,10 +63,19 @@
 		966CE85110E88C4400996174 /* WOLClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOLClientTest.m; sourceTree = "<group>"; };
 		966CE85410E890DB00996174 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		968B38CA10E904E000863E23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		968B393110E90F0700863E23 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		968B393210E90F0700863E23 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		968B393110E90F0700863E23 /* ComputerValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerValidator.h; sourceTree = "<group>"; };
+		968B393210E90F0700863E23 /* ComputerValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputerValidator.m; sourceTree = "<group>"; };
 		968B39BA10E91A2B00863E23 /* SettingsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTest.h; sourceTree = "<group>"; };
 		968B39BB10E91A2B00863E23 /* SettingsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTest.m; sourceTree = "<group>"; };
+		96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = openwol.xcdatamodel; sourceTree = "<group>"; };
+		96F352F110E9ED6000F6B43C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		96F3532910E9F71600F6B43C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		96F3532A10E9F71600F6B43C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		96F3547810EA522C00F6B43C /* Computer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Computer.h; path = ../Computer.h; sourceTree = "<group>"; };
+		96F3547910EA522C00F6B43C /* Computer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Computer.m; path = ../Computer.m; sourceTree = "<group>"; };
+		96F354EB10EA5EEE00F6B43C /* ComputerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerDelegate.h; sourceTree = "<group>"; };
+		96F355C210EA861000F6B43C /* ComputerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerCell.h; sourceTree = "<group>"; };
+		96F355C310EA861000F6B43C /* ComputerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputerCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +88,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				966CE7C510E7F6CB00996174 /* libicucore.dylib in Frameworks */,
 				968B38CB10E904E000863E23 /* CFNetwork.framework in Frameworks */,
+				96F352F210E9ED6000F6B43C /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,17 +108,14 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				96F354CF10EA5CE200F6B43C /* Controller */,
+				96F354CE10EA5CBD00F6B43C /* RegexKit */,
+				96F354CD10EA5C9B00F6B43C /* Model */,
 				966CE84110E88B5300996174 /* UnitTest */,
-				966CE79D10E7F30B00996174 /* RegexKitLite.h */,
 				1D3623240D0F684500981E51 /* openwolAppDelegate.h */,
 				1D3623250D0F684500981E51 /* openwolAppDelegate.m */,
-				966CE79E10E7F31900996174 /* RegexKitLite.m */,
-				28D7ACF60DDB3853001CB0EB /* openwolViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* openwolViewController.m */,
-				966CE79010E7DF4200996174 /* WOLClient.h */,
-				966CE79110E7DF4200996174 /* WOLClient.m */,
-				968B393110E90F0700863E23 /* Settings.h */,
-				968B393210E90F0700863E23 /* Settings.m */,
+				96F355C210EA861000F6B43C /* ComputerCell.h */,
+				96F355C310EA861000F6B43C /* ComputerCell.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -140,7 +154,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2899E5210DE3E06400AC0155 /* openwolViewController.xib */,
+				96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */,
+				2899E5210DE3E06400AC0155 /* ComputerDetailView.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* openwol-Info.plist */,
 			);
@@ -150,6 +165,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96F352F110E9ED6000F6B43C /* CoreData.framework */,
 				968B38CA10E904E000863E23 /* CFNetwork.framework */,
 				966CE85410E890DB00996174 /* SenTestingKit.framework */,
 				966CE7C410E7F6CB00996174 /* libicucore.dylib */,
@@ -169,6 +185,41 @@
 				968B39BB10E91A2B00863E23 /* SettingsTest.m */,
 			);
 			name = UnitTest;
+			sourceTree = "<group>";
+		};
+		96F354CD10EA5C9B00F6B43C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96F3547810EA522C00F6B43C /* Computer.h */,
+				96F3547910EA522C00F6B43C /* Computer.m */,
+				966CE79010E7DF4200996174 /* WOLClient.h */,
+				966CE79110E7DF4200996174 /* WOLClient.m */,
+				968B393110E90F0700863E23 /* ComputerValidator.h */,
+				968B393210E90F0700863E23 /* ComputerValidator.m */,
+				96F354EB10EA5EEE00F6B43C /* ComputerDelegate.h */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		96F354CE10EA5CBD00F6B43C /* RegexKit */ = {
+			isa = PBXGroup;
+			children = (
+				966CE79D10E7F30B00996174 /* RegexKitLite.h */,
+				966CE79E10E7F31900996174 /* RegexKitLite.m */,
+				96466F2C10EB1D49005AE65B /* RegexPatterns.h */,
+			);
+			name = RegexKit;
+			sourceTree = "<group>";
+		};
+		96F354CF10EA5CE200F6B43C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				28D7ACF60DDB3853001CB0EB /* ComputerDetailViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* ComputerDetailViewController.m */,
+				96F3532910E9F71600F6B43C /* MainViewController.h */,
+				96F3532A10E9F71600F6B43C /* MainViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* openwolViewController.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* ComputerDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,10 +323,14 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* openwolAppDelegate.m in Sources */,
-				28D7ACF80DDB3853001CB0EB /* openwolViewController.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* ComputerDetailViewController.m in Sources */,
 				966CE79210E7DF4200996174 /* WOLClient.m in Sources */,
 				966CE79F10E7F31900996174 /* RegexKitLite.m in Sources */,
-				968B393310E90F0700863E23 /* Settings.m in Sources */,
+				968B393310E90F0700863E23 /* ComputerValidator.m in Sources */,
+				96F352EB10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */,
+				96F3532B10E9F71600F6B43C /* MainViewController.m in Sources */,
+				96F3547A10EA522C00F6B43C /* Computer.m in Sources */,
+				96F355C410EA861000F6B43C /* ComputerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,8 +342,9 @@
 				966CE84E10E88B8B00996174 /* openwolAppDelegate.m in Sources */,
 				966CE84F10E88B9400996174 /* WOLClient.m in Sources */,
 				966CE85310E88C4400996174 /* WOLClientTest.m in Sources */,
-				968B393410E90F0700863E23 /* Settings.m in Sources */,
+				968B393410E90F0700863E23 /* ComputerValidator.m in Sources */,
 				968B39BD10E91A2B00863E23 /* SettingsTest.m in Sources */,
+				96F352EC10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

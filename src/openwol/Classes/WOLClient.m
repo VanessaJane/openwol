@@ -20,92 +20,30 @@
 #import <strings.h>
 #import <netdb.h>
 #import <net/if.h>
-#import <netinet/in.h>
-#import <ifaddrs.h>
+
 #import <arpa/inet.h>
 #import <sys/select.h>
 #import <sys/time.h>
-#import <CFNetwork/CFNetwork.h>
 
+#import "RegexPatterns.h"
+
+#import "Computer.h"
+#import "Settings.h"
 
 #define BOARDCAST_ADDR "255.255.255.255"
 
 @implementation WOLClient
-@synthesize Mac = _mac;
-@synthesize Port = _port;
-@synthesize SubNet = _subNet;
-@synthesize Host = _host;
+@synthesize computer = _computer;
 
-const NSString* IP_PATTERN = @"^\\s*(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\s*$";
-const NSString* MAC_PATTERN = @"^\\s*([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})-([0-9A-Fa-f]{2})\\s*$";
 
 const int HEADER = 6;
 const int MAC_BYTES_LEN = 6;
 const int MAC_TIMES = 16;
 
-- (BOOL)checkPort
-{
-	return [_port intValue] > 0 && [_port intValue] <= 65535;
-}
 
--(BOOL)checkHost
+-(void) wakeUp
 {
-	NSArray* ipParts =
-		[_host captureComponentsMatchedByRegex:(NSString*)IP_PATTERN];
-	
-	if (5 == [ipParts count]){
-		return YES;
-	}
-	
-	CFHostRef host = CFHostCreateWithName(NULL, (CFStringRef)_host);
-	
-	CFStreamError err;
-	bzero(&err, sizeof(CFStreamError));
-	
-	BOOL ret = NO;
-	if(CFHostStartInfoResolution(host, kCFHostAddresses, &err))
-	{
-		Boolean hasBeenResolved;
-		NSArray* addrs = (NSArray*)CFHostGetAddressing(host, &hasBeenResolved);
-		if ([addrs count] > 0) {
-			NSData* addrData = [addrs objectAtIndex:0];
-			struct sockaddr_in* pAddr = (struct sockaddr_in*)[addrData bytes];
-			[_host release];
-			
-			char* pAddrString = inet_ntoa(pAddr->sin_addr);
-			
-			_host = [[NSString alloc] initWithCStringNoCopy:pAddrString
-													 length:strlen(pAddrString)
-											   freeWhenDone:YES];
-			
-			ret = YES;
-		}
-		
-	}
-	CFRelease(host);
-	return ret;
-}
-
--(BOOL)checkSubnetMask
-{
-	NSArray* ipParts =
-	[_subNet captureComponentsMatchedByRegex:(NSString*)IP_PATTERN];
-	
-	return (5 == [ipParts count]);
-	
-}
-
--(BOOL)checkMACFormat
-{
-	NSArray* macParts =
-		[_mac captureComponentsMatchedByRegex:(NSString*)MAC_PATTERN];
-	
-	return (7 == [macParts count]);
-}
-
--(void) wakeUp:(BOOL)overInternet
-{
-	if (overInternet) {
+	if (_computer.overInternet) {
 		[self wakeUpWan];
 	}else {
 		[self wakeUpLan];
@@ -133,55 +71,7 @@ const int MAC_TIMES = 16;
 	return [buffer autorelease];
 }
 
--(struct sockaddr_in*) getTargetAddr
-{
-	struct sockaddr_in* pRemoteIP = malloc(sizeof(struct sockaddr_in));
-	bzero(pRemoteIP, sizeof(struct sockaddr_in));
-	pRemoteIP->sin_family = AF_INET;
-	pRemoteIP->sin_port = htons([_port intValue]);
-	
-	NSArray* hostParts
-		= [_host captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
-	
-	
-	NSArray* maskParts
-		= [_subNet captureComponentsMatchedByRegex:(NSString *)IP_PATTERN];
-	
-	NSMutableString* ipAddressString
-		= [[NSMutableString alloc] initWithCapacity:16];
-	
-	uint8_t* remote = malloc([hostParts count] - 1);
-	
-	for (int i = 1; i < [hostParts count]; i++) {
-		remote[i - 1] = ((uint8_t)[[hostParts objectAtIndex:i] intValue])
-		| ~((uint8_t)[[maskParts objectAtIndex:i] intValue]);
-	}
-	
-	
-	[ipAddressString appendFormat:@"%d.%d.%d.%d",
-		remote[0],
-		remote[1],
-		remote[2],
-		remote[3]];
-	
-	free(remote);
-	
-	size_t addrBufferSize = [ipAddressString length] + 1;
-	char* pAddressBuffer = malloc(addrBufferSize);
-	bzero(pAddressBuffer, addrBufferSize);
-	[ipAddressString getCString:pAddressBuffer
-					  maxLength:addrBufferSize
-					   encoding:NSASCIIStringEncoding];
-	
-	inet_pton(AF_INET,
-			  pAddressBuffer,
-			  &(pRemoteIP->sin_addr.s_addr));
-	
-	
-	[ipAddressString release];
-	free(pAddressBuffer);
-	return pRemoteIP;
-}
+
 
 -(int) createUdpClient
 {
@@ -189,7 +79,7 @@ const int MAC_TIMES = 16;
 	
 	struct sockaddr_in localAddr;
 	localAddr.sin_family = AF_INET;
-	localAddr.sin_port = htons([_port intValue]);
+	localAddr.sin_port = htons([_computer.port intValue]);
 	localAddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	
 	bind(udpClient, (struct sockaddr*)&localAddr, sizeof(localAddr));
@@ -199,7 +89,7 @@ const int MAC_TIMES = 16;
 
 -(void) wakeUpWan
 {
-	struct sockaddr_in* remoteAddr = [self getTargetAddr];
+	struct sockaddr_in* remoteAddr = [_computer getTargetAddr];
 	int udpClient = [self createUdpClient];
 	NSData* payload = [self buildPayload];
 	
@@ -239,7 +129,7 @@ const int MAC_TIMES = 16;
 	mcAddress.sin_family = AF_INET;
 	inet_pton(AF_INET, BOARDCAST_ADDR, &mcAddress.sin_addr.s_addr);
 	
-	mcAddress.sin_port = htons([_port intValue]);
+	mcAddress.sin_port = htons([_computer.port intValue]);
 	
 	sendto(udpClient,
 		   [payload bytes],
@@ -255,7 +145,7 @@ const int MAC_TIMES = 16;
 -(NSData*) parseMAC
 {
 	NSArray* macParts =
-		[_mac captureComponentsMatchedByRegex:(NSString*)MAC_PATTERN];
+		[_computer.mac captureComponentsMatchedByRegex:(NSString*)MAC_PATTERN];
 	
 	if (nil == macParts) {
 		return nil;
@@ -284,10 +174,7 @@ const int MAC_TIMES = 16;
 
 -(void) dealloc
 {
-	[_mac release];
-	[_port release];
-	[_subNet release];
-	[_host release];
+	[_hostIPAddr release];	
 	[super dealloc];
 }
 
