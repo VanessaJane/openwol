@@ -86,7 +86,16 @@
 		
 	WOLClient* client = [[WOLClient alloc] init];
 	client.computer = computer;
+	computer.lastWakeupTime = [NSDate date];
+	[computer updated];
 	
+	openwolAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+	NSError *error = nil;
+	if (![delegate.managedObjectContext save:&error]) {
+		[self alert:[NSString
+					 stringWithFormat:@"Save failed. Error code: %d",
+					 [error code]]];
+	}
 	[client wakeUp];
 	[client release];
 }
@@ -94,7 +103,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if (buttonIndex == 0) {
-		// TODO: wake up
+		[self wakeUp:[_computers objectAtIndex:_selectedIndex]];
 	}
 }
 
@@ -121,21 +130,26 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-		/*
+		openwolAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+		
         // Delete the managed object at the given index path.
-        NSManagedObject *eventToDelete = [eventsArray objectAtIndex:indexPath.row];
-        [managedObjectContext deleteObject:eventToDelete];
+        Computer *computerToDelete = [_computers objectAtIndex:indexPath.row];
+        [delegate.managedObjectContext deleteObject:computerToDelete];
 		
         // Update the array and table view.
-        [eventsArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-		
+        
         // Commit the change.
         NSError *error;
-        if (![managedObjectContext save:&error]) {
-            // Handle the error.
-        }
-		 */
+        if ([delegate.managedObjectContext save:&error]) {
+            [_computers removeObjectAtIndex:indexPath.row];
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+							 withRowAnimation:YES];
+			
+        }else {
+			[self alert:[NSString stringWithFormat:@"Delete \"%@\" failed.", computerToDelete.name]];
+		}
+
+		
     }
 }
 
@@ -165,10 +179,6 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 - (void)dealloc
 {
 	[_detailView release];
-	
-	for (id obj in _computers){
-		[obj release];
-	}
 	
 	[_computers release];
 	[super dealloc];

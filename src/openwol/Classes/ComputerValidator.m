@@ -20,10 +20,15 @@
 
 -(BOOL)doValidator:(SEL)alertSelector target:(id)obj
 {
+	if ([self.name length] <= 0) {
+		[obj performSelector:alertSelector
+				  withObject:@"Name should not be empty."];
+		return NO;
+	}
 	
 	if (![self checkPort]) {
 		[obj performSelector:alertSelector
-				  withObject:@"Port should large than 0 and less than 65535."];
+				  withObject:@"Port should large than 0 and less than 65536."];
 		return NO;
 	}
 	

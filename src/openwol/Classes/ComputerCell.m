@@ -14,20 +14,22 @@
 - (void)computerUpdated:(Computer*)computer
 {
 	self.textLabel.text = computer.name;
-	[self.textLabel sizeToFit];
+	
 	self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 	if (computer.lastWakeupTime != nil) {
 		NSDateFormatter* f = [[NSDateFormatter alloc] init];
-		[f setDateStyle:NSDateFormatterFullStyle];
-		[f setTimeStyle:NSDateFormatterFullStyle];
+		[f setDateStyle:NSDateFormatterMediumStyle];
+		[f setTimeStyle:NSDateFormatterShortStyle];
 		
-		self.detailTextLabel.text = [f stringFromDate:computer.lastWakeupTime];
+		self.detailTextLabel.text = [NSString stringWithFormat:@"Last waked up at: %@",
+									 [f stringFromDate:computer.lastWakeupTime]];
 	}
 	else {
 		self.detailTextLabel.text = @"Never waked up before";
 		
 	}
-	[self autoresizesSubviews];
+	[self.textLabel sizeToFit];
+	[self.detailTextLabel sizeToFit];
 }
 
 @end
