@@ -64,8 +64,8 @@
 		_port.text = [NSString stringWithFormat:@"%d", [_computer.port intValue]];
 		_macAddress.text = _computer.mac;
 		_subNet.text = _computer.mask;
-		_lanOrWan.selectedSegmentIndex = [_computer.overInternet intValue];
-		_saveButton.titleLabel.text = @"Update";
+		
+		_lanOrWan.selectedSegmentIndex = [_computer.overInternet boolValue] ? 0 : 1;
 	}
 	else {
 		_name.text = @"";
@@ -74,7 +74,7 @@
 		_macAddress.text = @"";
 		_subNet.text = @"";
 		_lanOrWan.selectedSegmentIndex = 0;
-		_saveButton.titleLabel.text = @"Save";
+		
 	}
 }
 
@@ -96,9 +96,6 @@
 }
 - (IBAction)onSave:(id)sender
 {
-	
-
-	
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 	openwolAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
@@ -111,7 +108,11 @@
 	}
 	
 	_computer.port = [NSNumber numberWithInt:[_port.text intValue]];
-	_computer.overInternet = [NSNumber numberWithInt:_lanOrWan.selectedSegmentIndex];
+	
+	
+	_computer.overInternet = [NSNumber numberWithBool:(_lanOrWan.selectedSegmentIndex == 0)];
+	
+	
 	
 	_computer.mask = _subNet.text;
 	_computer.host = _host.text;
@@ -130,6 +131,12 @@
 					 stringWithFormat:@"Save failed. Error code: %d",
 					 [error code]]];
 	}else {
+		UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Info"
+															message:@"Save successfully."
+														delegate:self
+												  cancelButtonTitle:@"Okey"
+												  otherButtonTitles:nil];
+		
 		if (insert) {
 			if (_delegate != nil &&
 				[_delegate conformsToProtocol:@protocol(ComputerDelegate)]) {
@@ -139,11 +146,11 @@
 		else {
 			[_computer updated];
 		}
+		
+		[alertView show];
+		[alertView release];
 	}
 
-	
-	[_computer release];
-	_computer = nil;
 }
 
 
