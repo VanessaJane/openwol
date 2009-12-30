@@ -39,7 +39,7 @@
 		return NO;
 	}
 	
-	if (self.overInternet) {
+	if ([self.overInternet boolValue]) {
 		
 		if (![self checkHost]) {
 			[obj performSelector:alertSelector
