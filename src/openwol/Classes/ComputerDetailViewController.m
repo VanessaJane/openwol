@@ -94,6 +94,11 @@
 	
 	// Release any cached data, images, etc that aren't in use.
 }
+
+- (void)showNotification:(BOOL)s
+{
+}
+
 - (IBAction)onSave:(id)sender
 {
 	// Release any retained subviews of the main view.

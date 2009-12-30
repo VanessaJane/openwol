@@ -14,11 +14,14 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 //#import "application_headers" as required
 
 
 @interface WOLClientTest : SenTestCase {
-
+	NSManagedObjectContext *managedObjectContext;
+	NSManagedObjectModel *managedObjectModel;
+	NSPersistentStoreCoordinator *coodinator;
 }
 
 

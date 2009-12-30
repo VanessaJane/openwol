@@ -29,6 +29,7 @@
 		968B391110E9097400863E23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968B38CA10E904E000863E23 /* CFNetwork.framework */; };
 		968B393310E90F0700863E23 /* ComputerValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* ComputerValidator.m */; };
 		968B393410E90F0700863E23 /* ComputerValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 968B393210E90F0700863E23 /* ComputerValidator.m */; };
+		96A57B3A10EBA21900CCF75E /* Computer.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F3547910EA522C00F6B43C /* Computer.m */; };
 		96F352EB10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */; };
 		96F352EC10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 96F352EA10E9ED0400F6B43C /* openwol.xcdatamodel */; };
 		96F352F210E9ED6000F6B43C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F352F110E9ED6000F6B43C /* CoreData.framework */; };
@@ -341,6 +342,7 @@
 				966CE85310E88C4400996174 /* WOLClientTest.m in Sources */,
 				968B393410E90F0700863E23 /* ComputerValidator.m in Sources */,
 				96F352EC10E9ED0400F6B43C /* openwol.xcdatamodel in Sources */,
+				96A57B3A10EBA21900CCF75E /* Computer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

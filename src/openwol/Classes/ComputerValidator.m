@@ -61,6 +61,10 @@
 
 -(struct sockaddr_in*) getTargetAddr
 {
+	if ((self.hostIPAddress == nil || [self.hostIPAddress length] < [@"0.0.0.0" length])
+		&& ![self checkHost]) {
+		return nil;
+	};
 	struct sockaddr_in* pRemoteIP = malloc(sizeof(struct sockaddr_in));
 	bzero(pRemoteIP, sizeof(struct sockaddr_in));
 	pRemoteIP->sin_family = AF_INET;
