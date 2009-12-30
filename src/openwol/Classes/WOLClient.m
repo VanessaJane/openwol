@@ -28,7 +28,7 @@
 #import "RegexPatterns.h"
 
 #import "Computer.h"
-#import "Settings.h"
+#import "ComputerValidator.h"
 
 #define BOARDCAST_ADDR "255.255.255.255"
 

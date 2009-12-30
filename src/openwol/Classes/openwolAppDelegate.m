@@ -7,7 +7,7 @@
 //
 
 #import "openwolAppDelegate.h"
-#import "openwolViewController.h"
+#import "ComputerDetailViewController.h"
 
 @implementation openwolAppDelegate
 
