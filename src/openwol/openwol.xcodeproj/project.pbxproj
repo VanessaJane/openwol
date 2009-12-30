@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* ComputerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ComputerDetailView.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ComputerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ComputerDetailViewController.m */; };
+		9646712010EB5C13005AE65B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F352F110E9ED6000F6B43C /* CoreData.framework */; };
 		966CE79210E7DF4200996174 /* WOLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79110E7DF4200996174 /* WOLClient.m */; };
 		966CE79F10E7F31900996174 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 966CE79E10E7F31900996174 /* RegexKitLite.m */; };
 		966CE7C510E7F6CB00996174 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 966CE7C410E7F6CB00996174 /* libicucore.dylib */; };
@@ -96,6 +97,7 @@
 				966CE86A10E890E700996174 /* SenTestingKit.framework in Frameworks */,
 				966CE87A10E8918600996174 /* libicucore.dylib in Frameworks */,
 				968B391110E9097400863E23 /* CFNetwork.framework in Frameworks */,
+				9646712010EB5C13005AE65B /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

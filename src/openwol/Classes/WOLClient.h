@@ -6,7 +6,7 @@
 //  Copyright 2009 Lychee Studio. All rights reserved.
 //
 
-
+#import <Foundation/Foundation.h>
 #import <netinet/in.h>
 #import <ifaddrs.h>
 
