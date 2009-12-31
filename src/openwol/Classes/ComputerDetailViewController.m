@@ -138,17 +138,22 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 						@"MAC", @"Port", @"Host", @"Mask", @"WAN or LAN", nil];
 	
 	_name = [self createTextField];
+	_name.placeholder = @"My FTP Server";
 	
 	_macAddress = [self createTextField];
 	[_macAddress setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+	_macAddress.placeholder = @"00-25-A0-CC-00-E2";
 	
 	_port = [self createTextField];
 	[_port setKeyboardType:UIKeyboardTypeNumberPad];
+	_port.placeholder = @"9";
 	
 	_host = [self createTextField];
+	_host.placeholder = @"ftp.my.com";
 	
 	_subNet = [self createTextField];
 	[_subNet setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+	_subNet.placeholder = @"255.255.255.255";
 	
 	_lanOrWan = [[UISegmentedControl alloc] initWithFrame:CGRectMake(120, 2, 170, 28)];
 	[_lanOrWan insertSegmentWithTitle:@"WAN" atIndex:0 animated:NO];
@@ -214,6 +219,11 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return 32;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView 
+  willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 - (IBAction)onSave:(id)sender
