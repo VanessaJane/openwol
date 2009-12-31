@@ -20,8 +20,7 @@
 {
 	if (nil == _detailView) {
 		_detailView = [[ComputerDetailViewController alloc]
-					   initWithNibName:@"ComputerDetailView"
-					   bundle:nil];
+					   initWithStyle:UITableViewStyleGrouped];
 		_detailView.delegate = self;
 	}
 	_detailView.computer = computer;

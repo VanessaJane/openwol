@@ -15,6 +15,8 @@
 
 @implementation ComputerDetailViewController
 
+const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
+
 @synthesize computer = _computer;
 @synthesize delegate = _delegate;
 
@@ -56,8 +58,114 @@
 }
 */
 
+-(void) setNavButton:(NSString*)title action:(SEL)action isLeft:(BOOL)isLeft
+{
+	UIBarButtonItem* button = [[UIBarButtonItem alloc] initWithTitle:title
+																	 style:UIBarButtonItemStylePlain
+																	target:self
+																	action:action];
+	if (isLeft) {
+		self.navigationItem.leftBarButtonItem = button;
+	}
+	else{
+		self.navigationItem.rightBarButtonItem = button;
+	}
+	[button release];
+	
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+													reuseIdentifier:(NSString*)ComputerCellIdentifier] autorelease];
+	UILabel* label = [self createLabel:[_labelsText objectAtIndex:[indexPath row]]];
+	UIView* inputField = [_inputFields objectAtIndex:[indexPath row]];
+	
+	[cell.contentView addSubview:label];
+	[cell.contentView addSubview:inputField];
+	
+	[label release];
+	
+	return cell;
+}
+
+- (UITextField*)createTextField
+{
+	UITextField *textField = [[UITextField alloc] initWithFrame:
+							  CGRectMake(120, 4, 200, 24)];
+	textField.clearsOnBeginEditing = NO;
+	[textField setDelegate:self];
+	[textField addTarget:self 
+				  action:@selector(textFieldDone:) 
+		forControlEvents:UIControlEventEditingDidEndOnExit];
+	
+	return textField;
+}
+
+- (UILabel*)createLabel:(NSString*)text
+{
+	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, 100, 24)];
+	label.textAlignment = UITextAlignmentLeft;
+	label.font = [UIFont boldSystemFontOfSize:14];
+	label.text = text;
+	return label;
+}
+
+
+- (void) backToMainView {
+  openwolAppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+	[delegate.navController popViewControllerAnimated:YES];
+
+}
+-(IBAction) onCancel:(id)sender
+{
+	[self backToMainView];
+
+}
+
+-(void) viewDidLoad{
+	[_inputFields release];
+	[_labelsText release];
+	[_name release];
+	[_macAddress release];
+	[_port release];
+	[_subNet release];
+	[_lanOrWan release];
+	[_computer release];
+	[_host release];
+	
+	_labelsText = [[NSArray alloc] initWithObjects:@"Name",
+						@"MAC", @"Port", @"Host", @"Mask", @"WAN or LAN", nil];
+	
+	_name = [self createTextField];
+	
+	_macAddress = [self createTextField];
+	[_macAddress setKeyboardType:UIKeyboardTypePhonePad];
+	
+	_port = [self createTextField];
+	[_port setKeyboardType:UIKeyboardTypeNumberPad];
+	
+	_host = [self createTextField];
+	
+	_subNet = [self createTextField];
+	[_subNet setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+	_lanOrWan = [[UISegmentedControl alloc] initWithFrame:CGRectMake(120, 2, 170, 28)];
+				
+	[_lanOrWan insertSegmentWithTitle:@"WAN" atIndex:0 animated:NO];
+	[_lanOrWan insertSegmentWithTitle:@"LAN" atIndex:1 animated:NO];
+	
+	[_lanOrWan setSelectedSegmentIndex:0];
+	
+	_inputFields =  [[NSArray alloc] initWithObjects:_name, _macAddress,
+					 _port, _host, _subNet, _lanOrWan, nil];
+		
+	[self setNavButton:@"Cancel" action:@selector(onCancel:) isLeft:YES];
+	[self setNavButton:@"Save" action:@selector(onSave:) isLeft:NO];
+	[super viewDidLoad];
+}
 
 - (void) viewWillAppear:(BOOL)animated{
+	
     if (nil != _computer) {
 		_name.text = _computer.name;
 		_host.text = _computer.host;
@@ -95,8 +203,18 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)showNotification:(BOOL)s
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+}
+
+- (NSInteger) tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section
+{
+	return kNumberOfEditableRows;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 32;
 }
 
 - (IBAction)onSave:(id)sender
@@ -107,8 +225,11 @@
 	
 	BOOL insert = nil == _computer;
 	if (insert) {
-		_computer = (Computer*)[NSEntityDescription insertNewObjectForEntityForName:@"Computer"
-												  inManagedObjectContext:delegate.managedObjectContext];
+		_computer = (Computer*)
+		[NSEntityDescription
+		 insertNewObjectForEntityForName:@"Computer"
+		 inManagedObjectContext:delegate.managedObjectContext];
+		
 		[_computer retain];
 	}
 	
@@ -116,9 +237,6 @@
 	
 	
 	_computer.overInternet = [NSNumber numberWithBool:(_lanOrWan.selectedSegmentIndex == 0)];
-	
-	
-	
 	_computer.mask = _subNet.text;
 	_computer.host = _host.text;
 	_computer.name = _name.text;
@@ -131,40 +249,65 @@
 	}
 	
 	NSError *error;
-	if (![delegate.managedObjectContext save:&error]) {
+	if (![delegate.managedObjectContext save:&error])
+	{
 		[self alert:[NSString
 					 stringWithFormat:@"Save failed. Error code: %d",
 					 [error code]]];
 	}else {
-		UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Info"
-															message:@"Save successfully."
-														delegate:self
-												  cancelButtonTitle:@"Okey"
-												  otherButtonTitles:nil];
-		
-		if (insert) {
+		if (insert) 
+		{
 			if (_delegate != nil &&
-				[_delegate conformsToProtocol:@protocol(ComputerDelegate)]) {
-					[_delegate computerAdded:_computer];
+				[_delegate conformsToProtocol:@protocol(ComputerDelegate)])
+			{
+				[_delegate computerAdded:_computer];
 			}
 		}
-		else {
+		else
+		{
 			[_computer updated];
 		}
 		
-		[alertView show];
-		[alertView release];
+		[self backToMainView];
 	}
 
 }
 
 
 - (void)dealloc {
-	if (_computer != nil) {
-		[_computer release];
-	}
+	[_inputFields release];
+	[_labelsText release];
+	[_name release];
+	[_macAddress release];
+	[_port release];
+	[_subNet release];
+	[_lanOrWan release];
+	[_computer release];
+	[_host release];
 	
 	[super dealloc];
+}
+
+-(IBAction)textFieldDone:(id)sender {
+    UITableViewCell *cell =
+    (UITableViewCell *)[[sender superview] superview];
+    UITableView *table = (UITableView *)[cell superview];
+    NSIndexPath *textFieldIndexPath = [table indexPathForCell:cell];
+    NSUInteger row = [textFieldIndexPath row];
+    row++;
+    if (row >= kNumberOfEditableRows)
+        row = 0;
+    NSUInteger newIndex[] = {0, row};
+    NSIndexPath *newPath = [[NSIndexPath alloc] initWithIndexes:newIndex 
+                                                         length:2];
+    UITableViewCell *nextCell = [self.tableView 
+                                 cellForRowAtIndexPath:newPath];
+    UITextField *nextField = nil;
+    for (UIView *oneView in nextCell.contentView.subviews) {
+        if ([oneView isMemberOfClass:[UITextField class]])
+            nextField = (UITextField *)oneView;
+    }
+    [nextField becomeFirstResponder];
 }
 
 @end

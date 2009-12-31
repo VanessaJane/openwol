@@ -7,18 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define kNumberOfEditableRows		6
+#define kNameRowIndex				0
+#define kMacRowIndex				1
+#define kPortRowIndex				2
+#define kHostRowIndex				3
+#define kMaskRowIndex				4
+#define kOverInternetRowIndex		5
 
 @class Computer;
 
-@interface ComputerDetailViewController : UIViewController {
+@interface ComputerDetailViewController : UITableViewController
+<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
 	IBOutlet UITextField* _macAddress;
 	IBOutlet UITextField* _port;
 	IBOutlet UITextField* _subNet;
 	IBOutlet UITextField* _host;
 	IBOutlet UITextField* _name;
 	IBOutlet UISegmentedControl* _lanOrWan;
-	IBOutlet UIButton* _saveButton;
+	IBOutlet UITextField* _textFieldBeingEdited;
+	
+	NSArray* _inputFields;
+	NSArray* _labelsText;
+	
 	Computer* _computer;
 	
 	id _delegate;
@@ -30,5 +41,6 @@
 - (IBAction)onSave:(id)sender;
 - (void)backgroundClick:(id)sender;
 - (void)alert:(NSString*)msg;
+- (UILabel*)createLabel:(NSString*)text;
 @end
 
