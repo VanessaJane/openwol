@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="15"/>
+			<integer value="16"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -63,7 +63,7 @@
 					<object class="IBUIViewController" id="91538834">
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="338162027">
 							<reference key="IBUINavigationBar"/>
-							<string key="IBUITitle">Open WOL</string>
+							<string key="IBUITitle">OpenWOL</string>
 							<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="514723623">
 								<int key="IBUIStyle">1</int>
 								<int key="IBUISystemItemIdentifier">4</int>
