@@ -140,7 +140,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	_name = [self createTextField];
 	
 	_macAddress = [self createTextField];
-	[_macAddress setKeyboardType:UIKeyboardTypePhonePad];
+	[_macAddress setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
 	
 	_port = [self createTextField];
 	[_port setKeyboardType:UIKeyboardTypeNumberPad];
@@ -149,11 +149,10 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	
 	_subNet = [self createTextField];
 	[_subNet setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+	
 	_lanOrWan = [[UISegmentedControl alloc] initWithFrame:CGRectMake(120, 2, 170, 28)];
-				
 	[_lanOrWan insertSegmentWithTitle:@"WAN" atIndex:0 animated:NO];
 	[_lanOrWan insertSegmentWithTitle:@"LAN" atIndex:1 animated:NO];
-	
 	[_lanOrWan setSelectedSegmentIndex:0];
 	
 	_inputFields =  [[NSArray alloc] initWithObjects:_name, _macAddress,
