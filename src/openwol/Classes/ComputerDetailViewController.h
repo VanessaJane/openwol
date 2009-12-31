@@ -24,7 +24,7 @@
 	IBOutlet UITextField* _subNet;
 	IBOutlet UITextField* _host;
 	IBOutlet UITextField* _name;
-	IBOutlet UISegmentedControl* _lanOrWan;
+	IBOutlet UISwitch* _boardcast;
 	IBOutlet UITextField* _textFieldBeingEdited;
 	
 	NSArray* _inputFields;

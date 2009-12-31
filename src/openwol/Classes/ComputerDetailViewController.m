@@ -130,12 +130,12 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	[_macAddress release];
 	[_port release];
 	[_subNet release];
-	[_lanOrWan release];
+	[_boardcast release];
 	[_computer release];
 	[_host release];
 	
 	_labelsText = [[NSArray alloc] initWithObjects:@"Name",
-						@"MAC", @"Port", @"Host", @"Mask", @"WAN or LAN", nil];
+						@"MAC", @"Port", @"Host", @"Mask", @"Boardcast", nil];
 	
 	_name = [self createTextField];
 	_name.placeholder = @"My FTP Server";
@@ -155,15 +155,12 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	[_subNet setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
 	_subNet.placeholder = @"255.255.255.255";
 	
-	_lanOrWan = [[UISegmentedControl alloc] initWithFrame:CGRectMake(120, 2, 170, 28)];
-	[_lanOrWan insertSegmentWithTitle:@"WAN" atIndex:0 animated:NO];
-	[_lanOrWan insertSegmentWithTitle:@"LAN" atIndex:1 animated:NO];
-	[_lanOrWan setSelectedSegmentIndex:0];
+	_boardcast = [[UISwitch alloc] initWithFrame:CGRectMake(120, 2, 170, 28)];
 	
 	_inputFields =  [[NSArray alloc] initWithObjects:_name, _macAddress,
-					 _port, _host, _subNet, _lanOrWan, nil];
+					 _port, _host, _subNet, _boardcast, nil];
 		
-	[self setNavButton:@"Cancel" action:@selector(onCancel:) isLeft:YES];
+	//[self setNavButton:@"Cancel" action:@selector(onCancel:) isLeft:YES];
 	[self setNavButton:@"Save" action:@selector(onSave:) isLeft:NO];
 	[super viewDidLoad];
 }
@@ -177,7 +174,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 		_macAddress.text = _computer.mac;
 		_subNet.text = _computer.mask;
 		
-		_lanOrWan.selectedSegmentIndex = [_computer.overInternet boolValue] ? 0 : 1;
+		_boardcast.on = ![_computer.overInternet boolValue];
 	}
 	else {
 		_name.text = @"";
@@ -185,7 +182,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 		_port.text = @"";
 		_macAddress.text = @"";
 		_subNet.text = @"";
-		_lanOrWan.selectedSegmentIndex = 0;
+		_boardcast.on = NO;
 		
 	}
 }
@@ -245,7 +242,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	_computer.port = [NSNumber numberWithInt:[_port.text intValue]];
 	
 	
-	_computer.overInternet = [NSNumber numberWithBool:(_lanOrWan.selectedSegmentIndex == 0)];
+	_computer.overInternet = [NSNumber numberWithBool:!_boardcast.on];
 	_computer.mask = _subNet.text;
 	_computer.host = _host.text;
 	_computer.name = _name.text;
@@ -290,7 +287,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	[_macAddress release];
 	[_port release];
 	[_subNet release];
-	[_lanOrWan release];
+	[_boardcast release];
 	[_computer release];
 	[_host release];
 	
