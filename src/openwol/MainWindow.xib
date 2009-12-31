@@ -63,7 +63,7 @@
 					<object class="IBUIViewController" id="91538834">
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="338162027">
 							<reference key="IBUINavigationBar"/>
-							<string key="IBUITitle">Computers</string>
+							<string key="IBUITitle">Open WOL</string>
 							<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="514723623">
 								<int key="IBUIStyle">1</int>
 								<int key="IBUISystemItemIdentifier">4</int>
