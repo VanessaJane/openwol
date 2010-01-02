@@ -57,7 +57,7 @@
 	
 	managedObjectModel = [[NSManagedObjectModel
 						   mergedModelFromBundles:[allBundles allObjects]] retain];
-	
+	[allBundles release];
 	coodinator = [[NSPersistentStoreCoordinator alloc]
 				  initWithManagedObjectModel:managedObjectModel];
 	

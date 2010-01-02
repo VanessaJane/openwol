@@ -92,7 +92,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 - (UITextField*)createTextField
 {
 	UITextField *textField = [[UITextField alloc] initWithFrame:
-							  CGRectMake(120, 4, 200, 24)];
+							  CGRectMake(120, 12, 200, 32)];
 	textField.clearsOnBeginEditing = NO;
 	[textField setDelegate:self];
 	[textField addTarget:self 
@@ -104,9 +104,9 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 
 - (UILabel*)createLabel:(NSString*)text
 {
-	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(10, 4, 100, 24)];
+	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 100, 32)];
 	label.textAlignment = UITextAlignmentLeft;
-	label.font = [UIFont boldSystemFontOfSize:14];
+	label.font = [UIFont boldSystemFontOfSize:18];
 	label.text = text;
 	return label;
 }
@@ -124,6 +124,16 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 }
 
 -(void) viewDidLoad{
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillShow:)
+												 name:UIKeyboardWillShowNotification
+											   object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillHide:)
+												 name:UIKeyboardWillHideNotification
+											   object:nil];
+	
+	
 	[_inputFields release];
 	[_labelsText release];
 	[_name release];
@@ -146,7 +156,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	
 	_port = [self createTextField];
 	[_port setKeyboardType:UIKeyboardTypeNumberPad];
-	_port.placeholder = @"9";
+	_port.placeholder = @"7";
 	
 	_host = [self createTextField];
 	_host.placeholder = @"ftp.my.com";
@@ -155,7 +165,7 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	[_subNet setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
 	_subNet.placeholder = @"255.255.255.255";
 	
-	_boardcast = [[UISwitch alloc] initWithFrame:CGRectMake(120, 2, 170, 28)];
+	_boardcast = [[UISwitch alloc] initWithFrame:CGRectMake(120, 8, 170, 32)];
 	
 	_inputFields =  [[NSArray alloc] initWithObjects:_name, _macAddress,
 					 _port, _host, _subNet, _boardcast, nil];
@@ -204,23 +214,65 @@ const NSString *ComputerCellIdentifier = @"ComputerCellIdentifier";
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-}
 
 - (NSInteger) tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section
 {
 	return kNumberOfEditableRows;
 }
 
+
+/*
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 32;
+	return 40;
+}
+*/
+
+-(void) keyboardWillShow:(NSNotification *)note
+{
+	
+	if (![_subNet isFirstResponder]) {
+		return;
+	}
+	
+	if(!_isScrolling)
+    {
+        _isScrolling = YES;
+        CGRect keyboardBounds;
+        [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+        CGFloat keyboardHeight = keyboardBounds.size.height;
+		
+		CGRect frame = self.view.frame;
+		frame.size.height += keyboardHeight;
+		self.view.frame = frame;
+		
+        CGPoint scrollPoint = frame.origin;
+        scrollPoint.y += ((UITableView*)self.view).contentSize.height - keyboardHeight;
+        [((UITableView*)self.view) setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+-(void) keyboardWillHide:(NSNotification *)note
+{
+	if(_isScrolling)
+    {
+        _isScrolling = NO;
+        CGRect keyboardBounds;
+        [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &keyboardBounds];
+        CGFloat keyboardHeight = keyboardBounds.size.height;
+		
+		CGRect frame = self.view.frame;
+		frame.size.height -= keyboardHeight;
+		self.view.frame = frame;
+		
+        CGPoint scrollPoint = frame.origin;
+		[((UITableView*)self.view) setContentOffset:scrollPoint animated:YES];
+    }
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView 
   willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+	return nil;
 }
 
 - (IBAction)onSave:(id)sender

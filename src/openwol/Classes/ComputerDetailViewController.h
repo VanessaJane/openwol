@@ -31,6 +31,7 @@
 	NSArray* _labelsText;
 	
 	Computer* _computer;
+	BOOL _isScrolling;
 	
 	id _delegate;
 }
