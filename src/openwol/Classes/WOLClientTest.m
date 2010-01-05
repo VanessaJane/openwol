@@ -53,7 +53,7 @@
 {
 	NSMutableSet *allBundles = [[NSMutableSet alloc] init];
 	[allBundles addObjectsFromArray:[NSBundle allBundles]];
-	[allBundles addObjectsFromArray:[NSBundle allFrameworks]];
+	//[allBundles addObjectsFromArray:[NSBundle allFrameworks]];
 	
 	managedObjectModel = [[NSManagedObjectModel
 						   mergedModelFromBundles:[allBundles allObjects]] retain];
